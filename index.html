@@ -470,6 +470,149 @@
                 margin-bottom: 10px;
             }
         }
+
+
+          /* Testimonials */
+    .testimonials {
+        padding: 80px 0;
+        background-color: var(--secondary);
+        position: relative;
+    }
+    
+    .testimonial-slider {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        gap: 30px;
+        padding: 20px 0;
+    }
+    
+    .testimonial-slider::-webkit-scrollbar {
+        display: none; /* Chrome/Safari/Opera */
+    }
+    
+    .testimonial {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        display: flex;
+        gap: 20px;
+        position: relative;
+    }
+    
+    .testimonial-img {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+    }
+    
+    .testimonial-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid var(--accent);
+    }
+    
+    .testimonial-content {
+        flex: 1;
+    }
+    
+    .stars {
+        color: #FFD700;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+    
+    .testimonial-content p {
+        font-style: italic;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+    
+    .testimonial-author {
+        font-weight: bold;
+        color: var(--primary);
+        margin-bottom: 5px;
+    }
+    
+    .testimonial-location {
+        font-size: 0.9rem;
+        color: #777;
+    }
+    
+    .testimonial-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        gap: 20px;
+    }
+    
+    .nav-prev, .nav-next {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+    }
+    
+    .nav-prev:hover, .nav-next:hover {
+        background-color: var(--accent);
+    }
+    
+    .nav-dots {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .dot.active {
+        background-color: var(--primary);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .testimonial {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .testimonial-img {
+            margin-bottom: 15px;
+        }
+    }
+    
+    @media (min-width: 992px) {
+        .testimonial-slider {
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
     </style>
 </head>
 <body>
@@ -477,7 +620,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <h1>Sweet <span>Delights</span></h1>
+                <h1>Bakes<span>2U</span></h1>
             </div>
             
             <div class="mobile-menu">☰</div>
@@ -618,30 +761,75 @@
         </div>
     </section>
     
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Our Customers Say</h2>
+ <!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+        </div>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial">
+                <div class="testimonial-img">
+                    <img src="/api/placeholder/100/100" alt="Customer">
+                </div>
+                <div class="testimonial-content">
+                    <div class="stars">★★★★★</div>
+                    <p>"The chocolate cake was absolutely divine! Moist, rich, and not too sweet. Everyone at my daughter's birthday party loved it. Will definitely order again!"</p>
+                    <div class="testimonial-author">- Sarah J.</div>
+                    <div class="testimonial-location">New York, NY</div>
+                </div>
             </div>
             
-            <div class="testimonial-container">
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        "The chocolate cake was absolutely divine! Moist, rich, and not too sweet. Everyone at my daughter's birthday party loved it. Will definitely order again!"
-                    </div>
-                    <div class="testimonial-author">- Sarah J.</div>
+            <div class="testimonial">
+                <div class="testimonial-img">
+                    <img src="/api/placeholder/100/100" alt="Customer">
                 </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        "I've tried many sourdough breads, but this is by far the best. The crust is perfect, and the flavor is exceptional. I'm now a regular customer!"
-                    </div>
+                <div class="testimonial-content">
+                    <div class="stars">★★★★★</div>
+                    <p>"I've tried many sourdough breads, but this is by far the best. The crust is perfect, and the flavor is exceptional. I'm now a regular customer!"</p>
                     <div class="testimonial-author">- Michael T.</div>
+                    <div class="testimonial-location">Boston, MA</div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-img">
+                    <img src="/api/placeholder/100/100" alt="Customer">
+                </div>
+                <div class="testimonial-content">
+                    <div class="stars">★★★★★</div>
+                    <p>"The macarons are out of this world! Perfect texture and amazing flavors. I ordered a box for a corporate event and everyone was impressed. The packaging was beautiful too!"</p>
+                    <div class="testimonial-author">- Laura H.</div>
+                    <div class="testimonial-location">Chicago, IL</div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-img">
+                    <img src="/api/placeholder/100/100" alt="Customer">
+                </div>
+                <div class="testimonial-content">
+                    <div class="stars">★★★★★</div>
+                    <p>"The online ordering process was so smooth and the delivery was right on time. The pastries arrived in perfect condition and tasted as fresh as if I'd bought them in person. Exceptional service!"</p>
+                    <div class="testimonial-author">- James W.</div>
+                    <div class="testimonial-location">Seattle, WA</div>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <div class="testimonial-nav">
+            <button class="nav-prev">❮</button>
+            <div class="nav-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <button class="nav-next">❯</button>
+        </div>
+    </div>
+</section>
     
     <!-- About Section -->
     <section id="about" class="about">
@@ -727,5 +915,76 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.testimonial-slider');
+            const prevBtn = document.querySelector('.nav-prev');
+            const nextBtn = document.querySelector('.nav-next');
+            const dots = document.querySelectorAll('.dot');
+            const testimonials = document.querySelectorAll('.testimonial');
+            
+            let currentIndex = 0;
+            const testimonialWidth = 100; // percentage
+            
+            // Initialize
+            updateDots();
+            
+            // Previous button
+            prevBtn.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    scrollToTestimonial();
+                }
+            });
+            
+            // Next button
+            nextBtn.addEventListener('click', function() {
+                if (currentIndex < testimonials.length - 1) {
+                    currentIndex++;
+                    scrollToTestimonial();
+                }
+            });
+            
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    currentIndex = index;
+                    scrollToTestimonial();
+                });
+            });
+            
+            // Scroll to current testimonial
+            function scrollToTestimonial() {
+                slider.scrollTo({
+                    left: slider.offsetWidth * currentIndex,
+                    behavior: 'smooth'
+                });
+                updateDots();
+            }
+            
+            // Update active dot
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Handle scroll events
+            slider.addEventListener('scroll', function() {
+                const scrollPosition = slider.scrollLeft;
+                const slideWidth = slider.offsetWidth;
+                const newIndex = Math.round(scrollPosition / slideWidth);
+                
+                if (newIndex !== currentIndex) {
+                    currentIndex = newIndex;
+                    updateDots();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
