@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweet Delights | Premium Bakery & Patisserie</title>
+    <title>Bakes2u | Guilt-Free Indulgence, Freshly Baked!</title>
     <style>
         /* Base Styles */
         :root {
-            --primary: #8B4513;
-            --secondary: #F5DEB3;
-            --accent: #D2691E;
-            --light: #FFF8DC;
-            --dark: #2E1A0F;
+            --primary: #6B8E23;
+            --secondary: #F5F5DC;
+            --accent: #9ACD32;
+            --light: #FFFFF0;
+            --dark: #2E2E1F;
         }
         
         * {
@@ -91,6 +91,12 @@
             color: var(--accent);
         }
         
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--dark);
+            font-style: italic;
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
@@ -150,6 +156,42 @@
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
         }
         
         /* Categories Section */
@@ -260,6 +302,17 @@
             margin-bottom: 15px;
         }
         
+        .product-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 10px;
+        }
+        
         .product-actions {
             display: flex;
             justify-content: space-between;
@@ -267,31 +320,124 @@
         
         /* Testimonials */
         .testimonials {
-            padding: 60px 0;
+            padding: 80px 0;
             background-color: var(--secondary);
+            position: relative;
         }
         
-        .testimonial-container {
-            max-width: 800px;
-            margin: 0 auto;
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+            gap: 30px;
+            padding: 20px 0;
+        }
+        
+        .testimonial-slider::-webkit-scrollbar {
+            display: none; /* Chrome/Safari/Opera */
         }
         
         .testimonial {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            width: 100%;
             background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+            position: relative;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+        }
+        
+        .testimonial-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
         }
         
         .testimonial-content {
+            flex: 1;
+        }
+        
+        .stars {
+            color: #FFD700;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .testimonial-content p {
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
         
         .testimonial-author {
             font-weight: bold;
             color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-location {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+        
+        .nav-prev, .nav-next {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-prev:hover, .nav-next:hover {
+            background-color: var(--accent);
+        }
+        
+        .nav-dots {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .dot.active {
+            background-color: var(--primary);
         }
         
         /* About Section */
@@ -313,6 +459,22 @@
         
         .about-content p {
             margin-bottom: 15px;
+        }
+        
+        .about-features {
+            margin-top: 30px;
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .about-feature-icon {
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
         }
         
         /* Newsletter */
@@ -358,7 +520,15 @@
         }
         
         .newsletter-form button:hover {
-            background-color: #c25e1c;
+            background-color: #8FBC8F;
+        }
+        
+        .social-media {
+            margin-top: 30px;
+        }
+        
+        .social-media p {
+            margin-bottom: 15px;
         }
         
         /* Footer */
@@ -469,150 +639,17 @@
                 border-radius: 4px;
                 margin-bottom: 10px;
             }
+            
+            .testimonial {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .testimonial-img {
+                margin-bottom: 15px;
+            }
         }
-
-
-          /* Testimonials */
-    .testimonials {
-        padding: 80px 0;
-        background-color: var(--secondary);
-        position: relative;
-    }
-    
-    .testimonial-slider {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
-        gap: 30px;
-        padding: 20px 0;
-    }
-    
-    .testimonial-slider::-webkit-scrollbar {
-        display: none; /* Chrome/Safari/Opera */
-    }
-    
-    .testimonial {
-        scroll-snap-align: start;
-        flex-shrink: 0;
-        width: 100%;
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-        display: flex;
-        gap: 20px;
-        position: relative;
-    }
-    
-    .testimonial-img {
-        width: 80px;
-        height: 80px;
-        flex-shrink: 0;
-    }
-    
-    .testimonial-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 3px solid var(--accent);
-    }
-    
-    .testimonial-content {
-        flex: 1;
-    }
-    
-    .stars {
-        color: #FFD700;
-        margin-bottom: 10px;
-        font-size: 1.2rem;
-    }
-    
-    .testimonial-content p {
-        font-style: italic;
-        margin-bottom: 15px;
-        line-height: 1.6;
-    }
-    
-    .testimonial-author {
-        font-weight: bold;
-        color: var(--primary);
-        margin-bottom: 5px;
-    }
-    
-    .testimonial-location {
-        font-size: 0.9rem;
-        color: #777;
-    }
-    
-    .testimonial-nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 30px;
-        gap: 20px;
-    }
-    
-    .nav-prev, .nav-next {
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.3s;
-    }
-    
-    .nav-prev:hover, .nav-next:hover {
-        background-color: var(--accent);
-    }
-    
-    .nav-dots {
-        display: flex;
-        gap: 10px;
-    }
-    
-    .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: #ccc;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .dot.active {
-        background-color: var(--primary);
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .testimonial {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .testimonial-img {
-            margin-bottom: 15px;
-        }
-    }
-    
-    @media (min-width: 992px) {
-        .testimonial-slider {
-            width: 90%;
-            margin: 0 auto;
-        }
-    }
     </style>
 </head>
 <body>
@@ -620,7 +657,8 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <h1>Bakes<span>2U</span></h1>
+                <h1>Bakes<span>2u</span></h1>
+                <div class="tagline">Guilt-Free Indulgence, Freshly Baked!</div>
             </div>
             
             <div class="mobile-menu">☰</div>
@@ -644,9 +682,44 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h2>Artisanal Bakery & Patisserie</h2>
-                <p>Handcrafted with love using only premium ingredients. Experience the perfect blend of tradition and innovation.</p>
+                <h2>Healthy, Delicious Baked Goods</h2>
+                <p>Low-sugar, keto-friendly, and gluten-free treats that let you indulge without guilt. Every bite is crafted with wholesome ingredients and zero compromises on taste.</p>
                 <a href="#shop" class="btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Bakes2u?</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🍯</div>
+                    <h3 class="feature-title">Low-Sugar Goodness</h3>
+                    <p>Satisfy your sweet tooth with bakes that are naturally sweetened and free from refined sugars.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🥑</div>
+                    <h3 class="feature-title">Keto-Friendly Treats</h3>
+                    <p>Enjoy desserts that fit your low-carb lifestyle without sacrificing flavor.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌾</div>
+                    <h3 class="feature-title">Gluten-Free Perfection</h3>
+                    <p>No gluten, no problem! Our bakes are light, delicious, and safe for gluten-sensitive foodies.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3 class="feature-title">Fresh & Homemade</h3>
+                    <p>Baked with love, using only the finest ingredients, for a taste that feels like home.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -655,15 +728,15 @@
     <section id="shop" class="categories">
         <div class="container">
             <div class="section-title">
-                <h2>Our Categories</h2>
+                <h2>Our Offerings</h2>
             </div>
             
             <div class="category-grid">
                 <div class="category-card">
                     <div class="category-img" style="background-image: url('/api/placeholder/400/300')"></div>
                     <div class="category-content">
-                        <h3>Artisan Breads</h3>
-                        <p>Freshly baked sourdough, baguettes, and specialty breads</p>
+                        <h3>Cookies & Brownies</h3>
+                        <p>Crispy, chewy, and packed with goodness.</p>
                         <a href="#" class="btn">View Collection</a>
                     </div>
                 </div>
@@ -671,8 +744,8 @@
                 <div class="category-card">
                     <div class="category-img" style="background-image: url('/api/placeholder/400/300')"></div>
                     <div class="category-content">
-                        <h3>Gourmet Pastries</h3>
-                        <p>Croissants, danish, and classic French pastries</p>
+                        <h3>Cakes & Cupcakes</h3>
+                        <p>Moist, flavorful, and perfect for any occasion.</p>
                         <a href="#" class="btn">View Collection</a>
                     </div>
                 </div>
@@ -680,8 +753,8 @@
                 <div class="category-card">
                     <div class="category-img" style="background-image: url('/api/placeholder/400/300')"></div>
                     <div class="category-content">
-                        <h3>Divine Cakes</h3>
-                        <p>Celebration cakes, tortes, and gateaux</p>
+                        <h3>Breads & Loaves</h3>
+                        <p>Soft, healthy, and ideal for daily munching.</p>
                         <a href="#" class="btn">View Collection</a>
                     </div>
                 </div>
@@ -689,9 +762,9 @@
                 <div class="category-card">
                     <div class="category-img" style="background-image: url('/api/placeholder/400/300')"></div>
                     <div class="category-content">
-                        <h3>Sweet Treats</h3>
-                        <p>Cookies, macarons, and petit fours</p>
-                        <a href="#" class="btn">View Collection</a>
+                        <h3>Custom Orders</h3>
+                        <p>Special requests? We've got you covered!</p>
+                        <a href="#" class="btn">Make a Request</a>
                     </div>
                 </div>
             </div>
@@ -709,9 +782,11 @@
                 <div class="product-card">
                     <div class="product-img" style="background-image: url('/api/placeholder/400/300')"></div>
                     <div class="product-content">
-                        <h3 class="product-title">Chocolate Éclair</h3>
-                        <p>Choux pastry filled with rich chocolate cream and topped with chocolate glaze.</p>
-                        <div class="product-price">$4.50</div>
+                        <span class="product-badge">Keto</span>
+                        <span class="product-badge">Low Sugar</span>
+                        <h3 class="product-title">Chocolate Chip Cookies</h3>
+                        <p>Soft and chewy cookies with sugar-free chocolate chips and almond flour.</p>
+                        <div class="product-price">$12.99 (Pack of 6)</div>
                         <div class="product-actions">
                             <a href="#" class="btn">Details</a>
                             <button class="btn">Add to Cart</button>
@@ -722,9 +797,10 @@
                 <div class="product-card">
                     <div class="product-img" style="background-image: url('/api/placeholder/400/300')"></div>
                     <div class="product-content">
-                        <h3 class="product-title">Sourdough Bread</h3>
-                        <p>Traditional sourdough bread with a crusty exterior and soft, tangy interior.</p>
-                        <div class="product-price">$6.75</div>
+                        <span class="product-badge">Gluten-Free</span>
+                        <h3 class="product-title">Banana Bread</h3>
+                        <p>Moist banana bread made with coconut flour, sweetened with dates and ripe bananas.</p>
+                        <div class="product-price">$14.50</div>
                         <div class="product-actions">
                             <a href="#" class="btn">Details</a>
                             <button class="btn">Add to Cart</button>
@@ -735,9 +811,11 @@
                 <div class="product-card">
                     <div class="product-img" style="background-image: url('/api/placeholder/400/300')"></div>
                     <div class="product-content">
-                        <h3 class="product-title">Raspberry Tart</h3>
-                        <p>Buttery shortcrust pastry filled with vanilla custard and topped with fresh raspberries.</p>
-                        <div class="product-price">$5.25</div>
+                        <span class="product-badge">Keto</span>
+                        <span class="product-badge">Gluten-Free</span>
+                        <h3 class="product-title">Vanilla Cupcakes</h3>
+                        <p>Light and fluffy vanilla cupcakes with cream cheese frosting, keto-friendly and gluten-free.</p>
+                        <div class="product-price">$18.99 (Pack of 4)</div>
                         <div class="product-actions">
                             <a href="#" class="btn">Details</a>
                             <button class="btn">Add to Cart</button>
@@ -748,9 +826,11 @@
                 <div class="product-card">
                     <div class="product-img" style="background-image: url('/api/placeholder/400/300')"></div>
                     <div class="product-content">
-                        <h3 class="product-title">Almond Croissant</h3>
-                        <p>Buttery layered croissant filled with almond cream and topped with sliced almonds.</p>
-                        <div class="product-price">$3.95</div>
+                        <span class="product-badge">Low Sugar</span>
+                        <span class="product-badge">Gluten-Free</span>
+                        <h3 class="product-title">Chocolate Brownies</h3>
+                        <p>Fudgy chocolate brownies made with avocado, sweetened with monk fruit, and absolutely delicious.</p>
+                        <div class="product-price">$16.99 (Pack of 6)</div>
                         <div class="product-actions">
                             <a href="#" class="btn">Details</a>
                             <button class="btn">Add to Cart</button>
@@ -761,88 +841,88 @@
         </div>
     </section>
     
- <!-- Testimonials Section -->
-<section class="testimonials">
-    <div class="container">
-        <div class="section-title">
-            <h2>What Our Customers Say</h2>
-        </div>
-        
-        <div class="testimonial-slider">
-            <div class="testimonial">
-                <div class="testimonial-img">
-                    <img src="/api/placeholder/100/100" alt="Customer">
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-img">
+                        <img src="/api/placeholder/100/100" alt="Customer">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <p>"I've been on the keto diet for months and was really missing desserts. The Bakes2u chocolate brownies are life-changing! You absolutely cannot tell they're sugar-free and low-carb. My new guilt-free pleasure!"</p>
+                        <div class="testimonial-author">- Jennifer K.</div>
+                        <div class="testimonial-location">Fitness Coach</div>
+                    </div>
                 </div>
-                <div class="testimonial-content">
-                    <div class="stars">★★★★★</div>
-                    <p>"The chocolate cake was absolutely divine! Moist, rich, and not too sweet. Everyone at my daughter's birthday party loved it. Will definitely order again!"</p>
-                    <div class="testimonial-author">- Sarah J.</div>
-                    <div class="testimonial-location">New York, NY</div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-img">
+                        <img src="/api/placeholder/100/100" alt="Customer">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <p>"As someone with celiac disease, finding baked goods that are both safe and tasty is a challenge. Bakes2u's gluten-free banana bread is seriously the best I've ever had - you would never know it's gluten-free!"</p>
+                        <div class="testimonial-author">- David R.</div>
+                        <div class="testimonial-location">Food Blogger</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-img">
+                        <img src="/api/placeholder/100/100" alt="Customer">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <p>"I ordered a custom birthday cake for my diabetic mother and she was in tears - it's been years since she could enjoy a proper cake. The low-sugar vanilla cake was incredible and the customer service was outstanding!"</p>
+                        <div class="testimonial-author">- Amanda T.</div>
+                        <div class="testimonial-location">Happy Customer</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-img">
+                        <img src="/api/placeholder/100/100" alt="Customer">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars">★★★★★</div>
+                        <p>"I've been trying to reduce my sugar intake but have the biggest sweet tooth. These cookies and brownies don't taste 'healthy' at all - they're just genuinely delicious! Prompt delivery and beautiful packaging too."</p>
+                        <div class="testimonial-author">- Michael W.</div>
+                        <div class="testimonial-location">Regular Customer</div>
+                    </div>
                 </div>
             </div>
             
-            <div class="testimonial">
-                <div class="testimonial-img">
-                    <img src="/api/placeholder/100/100" alt="Customer">
+            <div class="testimonial-nav">
+                <button class="nav-prev">❮</button>
+                <div class="nav-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
                 </div>
-                <div class="testimonial-content">
-                    <div class="stars">★★★★★</div>
-                    <p>"I've tried many sourdough breads, but this is by far the best. The crust is perfect, and the flavor is exceptional. I'm now a regular customer!"</p>
-                    <div class="testimonial-author">- Michael T.</div>
-                    <div class="testimonial-location">Boston, MA</div>
-                </div>
-            </div>
-            
-            <div class="testimonial">
-                <div class="testimonial-img">
-                    <img src="/api/placeholder/100/100" alt="Customer">
-                </div>
-                <div class="testimonial-content">
-                    <div class="stars">★★★★★</div>
-                    <p>"The macarons are out of this world! Perfect texture and amazing flavors. I ordered a box for a corporate event and everyone was impressed. The packaging was beautiful too!"</p>
-                    <div class="testimonial-author">- Laura H.</div>
-                    <div class="testimonial-location">Chicago, IL</div>
-                </div>
-            </div>
-            
-            <div class="testimonial">
-                <div class="testimonial-img">
-                    <img src="/api/placeholder/100/100" alt="Customer">
-                </div>
-                <div class="testimonial-content">
-                    <div class="stars">★★★★★</div>
-                    <p>"The online ordering process was so smooth and the delivery was right on time. The pastries arrived in perfect condition and tasted as fresh as if I'd bought them in person. Exceptional service!"</p>
-                    <div class="testimonial-author">- James W.</div>
-                    <div class="testimonial-location">Seattle, WA</div>
-                </div>
+                <button class="nav-next">❯</button>
             </div>
         </div>
-        
-        <div class="testimonial-nav">
-            <button class="nav-prev">❮</button>
-            <div class="nav-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-            <button class="nav-next">❯</button>
-        </div>
-    </div>
-</section>
+    </section>
     
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-img">
-                    <img src="/api/placeholder/600/400" alt="Our Bakery">
+                    <img src="/api/placeholder/600/400" alt="Bakes2u Kitchen">
                 </div>
                 <div class="about-content">
-                    <h2>Our Story</h2>
-                    <p>Sweet Delights was founded in 2010 by award-winning pastry chef Emma Laurent. With over 15 years of experience in prestigious kitchens across Europe, Emma brings authentic techniques and innovative flavors to every creation.</p>
-                    <p>We believe in using only the finest ingredients - organic flour, European butter, farm-fresh eggs, and seasonal fruits. Each item is handcrafted daily in small batches to ensure exceptional quality and freshness.</p>
-                    <p>From our kitchen to your table, we're committed to delivering memorable sweet experiences for everyday moments and special celebrations.</p>
+                    <h2>The Bakes2u Story</h2>
+                    <p>At Bakes2u, we believe that delicious treats shouldn't come at the cost of your health. Our journey began with a simple mission: to create baked goods that taste amazing while supporting a healthy lifestyle.</p>
+                    <p>Founded by a health-conscious baker with a sweet tooth, Bakes2u was born from the desire to enjoy treats without guilt. After years of experimenting with alternative ingredients and natural sweeteners, we perfected recipes that make no compromises on taste or texture.</p>
+                    <p>Today, we're proud to offer a range of low-sugar, keto-friendly, and gluten-free options that prove healthy eating can be both nutritious and delicious. We're more than just a bakery—we're a healthy baking movement!</p>
                     <a href="#" class="btn">Read More</a>
                 </div>
             </div>
